@@ -1,4 +1,5 @@
 // Dependencies
+// source: https://scotch.io/tutorials/making-mean-apps-with-google-maps-part-i
 // -----------------------------------------------------
 var express         = require('express');
 var mongoose        = require('mongoose');
