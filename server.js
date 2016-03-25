@@ -11,7 +11,6 @@ var methodOverride = require('method-override');
 var jwt 		   = require('jwt-simple');
 var moment 		   = require('moment');
 var path 		   = require('path');
-var request 	   = require('request');
 var config         = require('./server/config.json');
 var app            = express();
 
@@ -32,10 +31,9 @@ app.use(methodOverride());
 
 // Routes
 // ------------------------------------------------------
-require('./server/routes.js')(app);
+require('./server/routes.js')(app, config);
 
 // Listen
 // -------------------------------------------------------
 app.listen(port);
 console.log('App listening on port ' + port);
-console.log(__dirname);
