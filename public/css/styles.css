@@ -1,137 +1,170 @@
-body {
-	background-color: #d8d8d8;
-}
 
-a {
-	color: #3f729b;
-}
 
-a:hover {
-	color: #1c5380;
-}
+/*
+NOTE: Check out fonts Kanit, Exo2 (700), Tatillium Web
+*/
 
-.text-muted {
-	color: #90939a;
-}
-
-.navbar {
-	min-height: 50px;
-	border: 0;
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
-}
-
-.navbar-header {
-	float: left;
-	padding-left: 15px;
-}
-
-.navbar-brand {
-	height: 50px;
-	padding: 0 15px;
-	font-size: inherit;
-	line-height: 50px;
-}
-
-.navbar-nav {
-	float: left;
-	margin: 0;
-}
-
-.navbar-nav > li {
-	float: left;
-}
-
-.navbar-nav > li > a {
-	padding: 0 15px;
-	line-height: 50px;
-}
-
-.navbar-text {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.center-form {
-	width: 315px;
-	margin: 10% auto;
-}
-
-.signup-or-separator {
-	position: relative;
-	height: 29px;
-	margin: 5px 0;
+p.loading{
 	text-align: center;
-	background: none;
-}
-
-.signup-or-separator hr {
-	width: 90%;
-	margin: -16px auto 10px auto;
-	border-top: 1px solid #dce0e0;
-}
-
-.signup-or-separator .text {
-	display: inline-block;
-	padding: 8px;
+	font-size: 4rem;
 	margin: 0;
-	background-color: #fff;
 }
 
-.has-feedback .form-control-feedback {
-	top: 0;
-	left: 0;
-	width: 46px;
-	height: 46px;
-	line-height: 46px;
-	color: #555;
+.list-group.sort-info li p{
+	margin:0;
 }
 
-[class^='ion-'] {
-	font-size: 1.2em;
+.tab-content .tab-pane{
+	padding-top:15px;
 }
 
-.has-feedback .form-control {
-	padding-left: 42px;
+.table{
+	margin:0;
+	width:100%;
 }
 
-.btn-instagram {
-	color: #fff;
-	background-color: #517fa4;
-	border: 1px solid #456c8c;
+.table th span{
+	cursor:pointer;
+	color:#3f729b;
+	display:inline-block;
+	vertical-align: middle;
 }
 
-.btn-instagram:hover,
-.btn-instagram:focus {
-	color: #fff;
-	background-color: #303030;
-}
-
-.media-object {
+.table th span i{
+	font-size: 10px;
 	display: inline-block;
-	width: 32px;
-	height: 32px;
+	vertical-align: middle;
 }
 
-.media-heading {
-	display: block;
-	margin: 0;
-	color: #3f729b;
+.table td img.team-logo{
+	width:20px;
+	display:inline-block;
+	vertical-align: middle;
 }
 
-.media-heading:hover {
-	color: #1c5380;
+.table td .ion-ios7-information-outline{
+	margin-right:5px;
 }
 
-.soften {
-	height: 1px;
-	background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
-	background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
-	background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
-	border: 0;
+.list-group.game-list{
+	width:100%;
+	max-width:100%;
 }
 
-.thumbnail {
-	border: 0;
-	border-radius: 0;
-	box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
+.list-group.game-list{
+	display:flex;
+	flex-flow: row wrap;
+	margin:0;
 }
+.list-group.game-list li{
+	float: none;
+	padding-left: 0.9375rem;
+	padding-right: 0.9375rem;
+	margin: 0 0 5px 0;
+	width:100%;
+	text-align:center;
+}
+.list-group.game-list li .checkbox{
+	margin:0;
+}
+
+div.tooltip{
+	font-size:16px;
+}
+
+/* set reference point */
+.tab-animation > .tab-content {
+    position: relative;
+}
+
+/* set animate effect */
+.tab-animation > .tab-content > .tab-pane{
+    transition: 0.2s linear opacity;
+}
+
+/* overwrite display: none and remove from document flow */
+.tab-animation > .tab-content > .tab-pane.active-remove {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: block;
+}
+
+/* opacity=0 when removing "active" class */
+.tab-animation > .tab-content > .tab-pane.active-remove-active {
+    opacity: 0;
+}
+
+/* opacity=0 when adding "active" class */
+.tab-animation > .tab-content > .tab-pane.active-add {
+    opacity: 0;
+}
+
+.sb-game{
+	width:100%;
+	margin-bottom:15px;
+	border:1px solid #808080;
+	background:#222222;
+	border-radius:5px;
+	display:inline-block;
+}
+
+.img-container{
+	display: table-cell;
+    height: 40px;
+    margin: 0 auto;
+    min-width: 40px;
+    overflow: hidden;
+    padding-right: 4px;
+    position: relative;
+    vertical-align: middle;
+    width: 40px;
+}
+
+.img-container img{
+	bottom: 0;
+    left: 0;
+    margin: 0 auto;
+    max-width: 35px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.team-meta{
+	display: table-cell;
+    font-size: 11px;
+    line-height: 1.2;
+    padding-left: 9px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.team-meta h2{
+    font-size: 14px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin:0;
+}
+.team-meta p.record{
+	color: #999;
+    font-size: 10px;
+    line-height: 14px;
+    margin: 4px 0 0 0;
+    text-align: inherit;
+}
+
+td.status, td.pitching-result{
+	text-transform: uppercase;
+	vertical-align: middle !important;
+    font-size: 10px;
+    text-align: center;
+    padding: 5px 0 !important;
+}
+td.score{
+	vertical-align:middle !important;
+    font-size: 20px;
+    font-weight: 700;
+}
+

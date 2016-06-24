@@ -1,24 +1,25 @@
 {
-  "name": "your-app-name",
+  "name": "woba-scraper",
   "version": "0.0.0",
-  "description": "node server with angular starter pack",
+  "description": "Scrapes the web for BVP wOBA",
   "main": "server/server.js",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "expresstarter"
+    "url": "wobasraper"
   },
   "author": "Lucas Byerley",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.0",
+    "cheerio": "latest",
     "express": "^4.13.4",
     "jwt-simple": "^0.5.0",
     "method-override": "^2.3.5",
-    "moment": "^2.12.0",
+    "moment": "^2.13.0",
     "mongoose": "^4.4.10",
     "morgan": "^1.7.0",
     "request": "^2.69.0"

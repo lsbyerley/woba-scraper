@@ -1,12 +1,333 @@
-<div class="container">
-    
-    <div class="jumbotron">
-        <h2><i class="ion-beer"></i> Your App Name</h2>
-        <p>This is a basic Node server with AngularJS.</p>
-        <p>{{ hello }}</p>
-        <p>
-            <a class="btn btn-lg btn-success" href="#/login"><i class="ion-log-in"></i> Log in</a>
-        </p>
-    </div>
+<div class="container-fluid">
+
+	<div class="row">
+
+		<div class="col-sm-3">
+
+			<div class="row">
+		    	<div class="col-sm-12">
+		    		<div class="panel panel-default">
+		    			<div class="panel-body">
+
+		    				<form class="bs-component">
+						        <div class="form-group">
+						            <label class="control-label" for="focusedInput">Search Playas</label>
+						            <input class="form-control" id="focusedInput" type="text" ng-model="searchPlayers">
+						        </div>
+						    </form>
+
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
+
+		    <div class="row">
+		    	<div class="col-sm-12">
+		    		<div class="panel panel-default">
+		    			<div class="panel-body">
+
+			    			<form class="form-horizontal" id="positionForm">
+				    			<fieldset>
+				    				<div class="form-group">
+				    					<div class="col-sm-6">
+					    					<div class="radio">
+					    						<label>
+					    							<input type="radio" ng-model="selectedPosition" value="All">All
+					    						</label>
+					    					</div>
+					    					<div class="radio">
+					    						<label>
+					    							<input type="radio" ng-model="selectedPosition" value="C">C
+					    						</label>
+					    					</div>
+					    					<div class="radio">
+					    						<label>
+					    							<input type="radio" ng-model="selectedPosition" value="1B">1B
+					    						</label>
+					    					</div>
+					    					<div class="radio">
+					    						<label>
+					    							<input type="radio" ng-model="selectedPosition" value="2B">2B
+					    						</label>
+					    					</div>
+					    				</div>
+					    				<div class="col-sm-6">
+					    					<div class="radio">
+					    						<label>
+					    							<input type="radio" ng-model="selectedPosition" value="3B">3B
+					    						</label>
+					    					</div>
+					    					<div class="radio">
+					    						<label>
+					    							<input type="radio" ng-model="selectedPosition" value="SS">SS
+					    						</label>
+					    					</div>
+					    					<div class="radio">
+					    						<label>
+					    							<input type="radio" ng-model="selectedPosition" value="OF">OF
+					    						</label>
+					    					</div>
+					    					<div class="radio">
+					    						<label>
+					    							<input type="radio" ng-model="selectedPosition" value="DH">DH
+					    						</label>
+					    					</div>
+					    				</div>
+				    				</div>
+				    			</fieldset>
+			    			</form>
+
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
+
+		    <div class="row">
+		    	<div class="col-sm-12">
+		    		<div class="panel panel-default">
+		    			<div class="panel-body">
+
+							<ul class="list-group sort-info">
+								<li class="list-group-item">
+									<p><strong>Date:</strong> {{ date }}</p>
+								</li>
+								<li class="list-group-item">
+									<p><strong>Total Games:</strong> {{ game_count }}</p>
+								</li>
+								<li class="list-group-item">
+									<p><strong>Total Lineups:</strong> {{ lineup_count }}</p>
+								</li>
+								<li class="list-group-item">
+									<p><strong>Positions:</strong> {{ selectedPosition }}</p>
+								</li>
+								<li class="list-group-item">
+									<p><strong>Sort Type:</strong> {{ sortTextFormat(sortType) }}</p>
+								</li>
+								<li class="list-group-item">
+									<p><strong>Sort Reverse:</strong> {{ sortReverse }}</p>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+		    	</div>
+		    </div>
+
+
+		</div>
+
+		<div class="col-sm-6">
+
+			<uib-tabset class="tab-animation" active="active">
+
+				<uib-tab index="0" heading="BVP wOBA">
+					<div class="panel panel-default">
+					    <div class="panel-body">
+				    		<p class="loading" ng-show="loading"><i class="icon ion-refreshing"></i></p>
+				    		<table class="table" ng-show="!loading">
+				    			<thead>
+					    			<tr>
+					    				<th>Team</th>
+					    				<th>Order</th>
+					    				<th>Pos</th>
+					    				<th>Name</th>
+					    				<th>
+					    					<span ng-click="updateSort('ab',!sortReverse)">
+												AB
+												<i class="ion-chevron-down" ng-show="sortType == 'ab' && !sortReverse"></i>
+			        							<i class="ion-chevron-up" ng-show="sortType == 'ab' && sortReverse"></i>
+											</span>
+					    				</th>
+					    				<th>
+					    					<span ng-click="updateSort('hits',!sortReverse)">
+												H
+												<i class="ion-chevron-down" ng-show="sortType == 'hits' && !sortReverse"></i>
+			        							<i class="ion-chevron-up" ng-show="sortType == 'hits' && sortReverse"></i>
+											</span>
+					    				</th>
+					    				<th>
+					    					<span ng-click="updateSort('hr',!sortReverse)">
+												HR
+												<i class="ion-chevron-down" ng-show="sortType == 'hr' && !sortReverse"></i>
+			        							<i class="ion-chevron-up" ng-show="sortType == 'hr' && sortReverse"></i>
+											</span>
+					    				</th>
+					    				<th>
+					    					<span ng-click="updateSort('rbi',!sortReverse)">
+												RBI
+												<i class="ion-chevron-down" ng-show="sortType == 'rbi' && !sortReverse"></i>
+			        							<i class="ion-chevron-up" ng-show="sortType == 'rbi' && sortReverse"></i>
+											</span>
+					    				</th>
+					    				<th>
+					    					<span ng-click="updateSort('avg',!sortReverse)">
+												AVG
+												<i class="ion-chevron-down" ng-show="sortType == 'avg' && !sortReverse"></i>
+			        							<i class="ion-chevron-up" ng-show="sortType == 'avg' && sortReverse"></i>
+											</span>
+					    				</th>
+					    				<th>
+					    					<span ng-click="updateSort('woba',!sortReverse)">
+												wOBA
+												<i class="ion-chevron-down" ng-show="sortType == 'woba' && !sortReverse"></i>
+			        							<i class="ion-chevron-up" ng-show="sortType == 'woba' && sortReverse"></i>
+											</span>
+					    				</th>
+					    				<th>
+					    					<span ng-click="updateSort('salary',!sortReverse)">
+												Salary
+												<i class="ion-chevron-down" ng-show="sortType == 'salary' && !sortReverse"></i>
+			        							<i class="ion-chevron-up" ng-show="sortType == 'salary' && sortReverse"></i>
+											</span>
+					    				</th>
+					    			</tr>
+				    			</thead>
+				    			<tbody>
+									<tr ng-repeat="player in players | orderBy:sortType:sortReverse | filter:searchPlayers | PositionFilter:selectedPosition | GameFilter:selectedGames">
+										<td><img class="team-logo" ng-src="{{ player.logo }}"/></td>
+										<td>{{ player.order }}</td>
+										<td>{{ player.pos }}</td>
+										<td ng-class="wobaClass(player.woba)">
+											<i class="ion-ios7-information-outline" uib-tooltip="vs. {{ player.opp_pitcher }}" tooltip-placement="left"></i>
+											{{ player.name }}
+										</td>
+										<td>{{ player.ab }}</td>
+										<td>{{ player.hits }}</td>
+										<td>{{ player.hr }}</td>
+										<td>{{ player.rbi }}</td>
+										<td>{{ player.avg }}</td>
+										<td ng-class="wobaClass(player.woba)">{{ player.woba }}</td>
+										<td>{{ player.salary }}</td>
+									</tr>
+				    			</tbody>
+				    		</table>
+					    </div>
+				    </div>
+				</uib-tab>
+
+				<uib-tab index="1" heading="Scoreboard">
+					<div class="panel panel-default">
+					    <div class="panel-body">
+
+					    	<div class="row">
+
+					    		<div class="col-sm-6" ng-repeat="game in scoreboardGames">
+						    		<div class="sb-game">
+							    		<table class="table">
+							    		<tbody>
+							    		<tr>
+							    			<td colspan="2" class="status">{{ game.status }}</td>
+							    		</tr>
+							    		<tr>
+							    			<td>
+							    				<div class="img-container">
+							    					<img ng-src="{{ game.away.logo }}"/>
+							    				</div>
+							    				<div class="team-meta">
+							    					<h2>{{ game.away.nickname }}</h2>
+							    					<p class="record">{{ game.away.record }}</p>
+							    				</div>
+							    			</td>
+							    			<td class="score">{{ game.away.score }}</td>
+							    		</tr>
+							    		<tr>
+							    			<td>
+							    				<div class="img-container">
+							    					<img ng-src="{{ game.home.logo }}"/>
+							    				</div>
+							    				<div class="team-meta">
+							    					<h2>{{ game.home.nickname }}</h2>
+							    					<p class="record">{{ game.home.record }}</p>
+							    				</div>
+							    			</td>
+							    			<td class="score">{{ game.home.score }}</td>
+							    		</tr>
+							    		<tr>
+							    		<td colspan="2" class="pitching-result" ng-if="game.winning_pitcher && game.losing_pitcher">
+							    			(W) {{ game.winning_pitcher }} - (L) {{ game.losing_pitcher }}
+							    		</td>
+							    		</tr>
+							    		</tbody>
+							    		</table>
+							    	</div>
+							    </div>
+
+					    	</div>
+
+					    </div>
+					</div>
+				</uib-tab>
+
+				<uib-tab index="2" heading="Player Points">
+					<div class="panel panel-default">
+					    <div class="panel-body">
+
+					    </div>
+					</div>
+				</uib-tab>
+
+			</uib-tabset>
+
+
+		</div>
+
+		<div class="col-sm-3">
+			<div class="panel panel-default">
+				<div class="panel-body">
+
+					<ul class="list-group game-list">
+
+						<li class="list-group-item">
+							<div class="row">
+								<div class="col-sm-6">
+					        		<div class="checkbox">
+					        			<label>
+					        				<input 
+					        					type="checkbox" 
+					        					value="SelectAll" 
+					        					ng-checked="selectedGames.length === games.length"
+					        					ng-click="toggleSelection('SelectAll')"
+					        				/>
+					        				 Select All
+					        			</label>
+					        		</div>
+					        	</div>
+					        	<div class="col-sm-6">
+					        		<div class="checkbox">
+					        			<label>
+					        				<input 
+					        					type="checkbox" 
+					        					value="DeselectAll" 
+					        					ng-checked="selectedGames.length === 0"
+					        					ng-click="toggleSelection('DeselectAll')"
+					        				/>
+					        				 Deselect All
+					        			</label>
+					        		</div>
+					        	</div>
+					        </div>
+			        	</li>
+
+			        	<li ng-repeat="game in games" class="list-group-item">
+			        		<div class="checkbox">
+			        			<label>
+			        				<input 
+			        					type="checkbox" 
+			        					value="{{game.game_id}}" 
+			        					ng-checked="selectedGames.indexOf(game.game_id) > -1"
+			        					ng-click="toggleSelection(game.game_id)"
+			        				/>
+			        				 {{ game.away_team }} @ {{ game.home_team }} ({{ game.game_time }})
+			        			</label>
+			        		</div>
+			        	</li>	
+			        </ul>
+
+			    </div>
+			</div>
+		</div>
+
+	</div>
 
 </div>
+
